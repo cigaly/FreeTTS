@@ -686,26 +686,6 @@ class DynamicClassLoader extends URLClassLoader {
             classPath.add(url);
         }
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public Class<?> loadClass(final String name)
-        throws ClassNotFoundException {
-        Class<?> loadedClass = findLoadedClass(name);
-        if (loadedClass == null) {
-            try {
-                loadedClass = findClass(name);
-            } catch (ClassNotFoundException e) {
-                // Swallow exception
-                // does not exist locally
-            }
-            if (loadedClass == null) {
-                loadedClass = super.loadClass(name);
-            }
-        }
-        return loadedClass;
-    }
 }
 
 /**
@@ -829,4 +809,3 @@ class UniqueVector<T> {
         return elementVector;
     }
 }
- 
